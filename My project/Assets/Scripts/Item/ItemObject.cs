@@ -23,4 +23,11 @@ public class ItemObject : MonoBehaviour, IInteractable
         CharacterManager.Instance.Player.addItem?.Invoke();         //델리게이트기반
         Destroy(gameObject);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Collision");
+        }
+    }
 }
