@@ -6,7 +6,6 @@ public class Move : MonoBehaviour
 {
     public Transform transform;
     public float duration;
-    Vector3 move;
     Vector3 minpos;
     Vector3 maxpos;
         
