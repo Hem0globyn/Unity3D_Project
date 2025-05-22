@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public interface IDamagable
@@ -57,7 +58,7 @@ public class PlayerCondition : MonoBehaviour, IDamagable
     {
         hunger.Add(amount); 
     }
-
+    
     public void TakePhysicalDamage(int damage)
     {
         health.Subtract(damage);

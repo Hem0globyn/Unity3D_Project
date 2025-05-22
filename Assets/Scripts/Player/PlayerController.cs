@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    bool movable = true; //이동가능여부
+
     [Header("Movement")]
     public float moveSpeed;
     public float jumpPower;
@@ -26,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public Action inventory;
     public Rigidbody _rigidbody;
 
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -41,7 +44,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Move();
+        if(movable) //이동가능여부
+            Move();
     }
     private void LateUpdate()
     {
@@ -136,5 +140,16 @@ public class PlayerController : MonoBehaviour
         return false;
 
     }
-    
+    public void StopForSec()
+    {
+        StartCoroutine(DisableMovementForSeconds(1f));
+    }
+
+    IEnumerator DisableMovementForSeconds(float seconds)
+    {
+        movable = false;
+        yield return new WaitForSeconds(seconds);
+        movable = true;
+    }
+
 }
